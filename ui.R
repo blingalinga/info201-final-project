@@ -25,14 +25,42 @@ intro_tab <- tabPanel(
 # So we're going to create a sidebarPanel() and a mainPanel() and then add them together
 
 # Create sidebar panel for widget
-sidebar_panel_widget <- sidebarPanel(
+sidebar_panel_widget1 <- sidebarPanel(
+  sliderInput(inputId = "slider1",
+              label = h4("Select Year Range"),
+              min = min(climate_df$Date),
+              max = max(climate_df$Date),
+              sep = "",
+              value = c(2010-01-01, 2018-09-01)
+  )
+)
+
+# Put a plot in the middle of the page
+main_panel_plot1 <- mainPanel(
+  plotlyOutput(outputId = "climate_plot1"),
+  fluidPage(
+    p("This chart looks to highlight the trends in average CO2 emissions month over month from 1958 through 2018. ")
+  )
+)
+
+# Interactive tab #1
+interactive_tab1 <- tabPanel(
+  "Charlie",
+  sidebarLayout(
+    sidebar_panel_widget,
+    main_panel_plot
+  )
+)
+
+
+sidebar_panel_widget2 <- sidebarPanel(
   checkboxGroupInput(
-    inputId = "country_selection",
+    inputId = "country_selection2",
     label = h4("Select a Region"),
     choices = c("World", "United States", "China", "Asia"),
     selected = "United States"
   ),
-  sliderInput(inputId = "slider1",
+  sliderInput(inputId = "slider2",
               label = h4("Select Year Range"),
               min = min(climate_df$year),
               max = max(climate_df$year),
@@ -42,57 +70,66 @@ sidebar_panel_widget <- sidebarPanel(
 )
 
 # Put a plot in the middle of the page
-main_panel_plot <- mainPanel(
+main_panel_plot2 <- mainPanel(
   plotlyOutput(outputId = "climate_plot"),
   fluidPage(
     p("Filler Text")
   )
 )
-
-# Interactive tab #1
-interactive_tab1 <- tabPanel(
-  "Henry",
-  sidebarLayout(
-    sidebar_panel_widget,
-    main_panel_plot
-  )
-)
-
 # Interactive tab #2
 interactive_tab2 <- tabPanel(
   "Christopher",
   sidebarLayout(
-    sidebar_panel_widget,
-    main_panel_plot
+    sidebar_panel_widget2,
+    main_panel_plot2
   )
 )
 
-# Climate tab  — combine sidebar panel and main panel
-climate_tab <- tabPanel(
-  "Charlie",
+sidebar_panel_widget3 <- sidebarPanel(
+  checkboxGroupInput(
+    inputId = "country_selection3",
+    label = h4("Select a Region"),
+    choices = c("World", "United States", "China", "Asia"),
+    selected = "United States"
+  ),
+  sliderInput(inputId = "slider3",
+              label = h4("Select Year Range"),
+              min = min(climate_df$year),
+              max = max(climate_df$year),
+              sep = "",
+              value = c(2010, 2020)
+  )
+)
+
+# Put a plot in the middle of the page
+main_panel_plot3 <- mainPanel(
+  plotlyOutput(outputId = "climate_plot3"),
+  fluidPage(
+    p("Filler Text")
+  )
+)
+# Interactive tab #3  — combine sidebar panel and main panel
+interactive_tab3 <- tabPanel(
+  "Henry",
   sidebarLayout(
-    sidebar_panel_widget,
-    main_panel_plot
+    sidebar_panel_widget3,
+    main_panel_plot3
   )
 )
 
 # Climate tab  — combine sidebar panel and main panel
 conclusion_tab <- tabPanel(
-  "Conclusion",
-  sidebarLayout(
-    sidebar_panel_widget,
-    main_panel_plot
+  "Conclusion"
   )
-)
 
 
 ui <- navbarPage(
   # Home page title
   "Climate Change",
   intro_tab,
-  climate_tab,
   interactive_tab1,
   interactive_tab2,
+  interactive_tab3,
   conclusion_tab
 )
 
