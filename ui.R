@@ -47,9 +47,27 @@ main_panel_plot <- mainPanel(
   )
 )
 
+# Interactive tab #1
+interactive_tab1 <- tabPanel(
+  "Henry",
+  sidebarLayout(
+    sidebar_panel_widget,
+    main_panel_plot
+  )
+)
+
+# Interactive tab #2
+interactive_tab2 <- tabPanel(
+  "Christopher",
+  sidebarLayout(
+    sidebar_panel_widget,
+    main_panel_plot
+  )
+)
+
 # Climate tab  — combine sidebar panel and main panel
 climate_tab <- tabPanel(
-  "Climate Viz",
+  "Charlie",
   sidebarLayout(
     sidebar_panel_widget,
     main_panel_plot
@@ -61,6 +79,8 @@ ui <- navbarPage(
   # Home page title
   "Climate Change",
   intro_tab,
-  climate_tab
+  climate_tab,
+  interactive_tab1,
+  interactive_tab2
 )
 
