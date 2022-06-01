@@ -117,9 +117,19 @@ interactive_tab3 <- tabPanel(
   )
 )
 
-# Climate tab  — combine sidebar panel and main panel
+# Conclusion Tab
+conclusion_side_bar <- sidebarPanel(
+  img(src = "https://www.holcim.com/sites/holcim/files/styles/teaser_2cols/public/images/holcim_icon_sustainability_gradient_srgb_climate_1-3teaser_v2_1.png?h=a8249c90&itok=prtjvSbV", height="100%", width="100%")
+)
+
+conclusion_main_panel <- mainPanel(
+  p("Filler Text")
+)
+
 conclusion_tab <- tabPanel(
-  "Conclusion"
+  "Conclusion",
+  conclusion_side_bar,
+  conclusion_main_panel
   )
 
 
