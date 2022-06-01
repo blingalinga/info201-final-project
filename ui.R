@@ -2,7 +2,7 @@ library(plotly)
 library(bslib)
 
 # Load climate data
-climate_df <- read.csv("https://raw.githubusercontent.com/owid/co2-data/master/owid-co2-data.csv", stringsAsFactors = FALSE)
+climate_df <- read.csv("https://datahub.io/core/co2-ppm/r/0.csv", stringsAsFactors = FALSE)
 
 # Home page tab
 intro_tab <- tabPanel(
