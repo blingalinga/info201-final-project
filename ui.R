@@ -27,7 +27,7 @@ intro_tab <- tabPanel(
 # Create sidebar panel for widget
 sidebar_panel_widget1 <- sidebarPanel(
   sliderInput(inputId = "slider1",
-              label = h4("Select Year Range"),
+              label = h4("Select Date Range"),
               min = min(climate_df$Date),
               max = max(climate_df$Date),
               sep = "",
@@ -39,13 +39,13 @@ sidebar_panel_widget1 <- sidebarPanel(
 main_panel_plot1 <- mainPanel(
   plotlyOutput(outputId = "climate_plot1"),
   fluidPage(
-    p("This chart looks to highlight the trends in average CO2 emissions month over month from 1958 through 2018. ")
+    p("This chart looks to highlight the trends in average CO2 emissions month over month from 1958 through 2018. This aims to answer if CO2 emissions have increased in the last sixty years and at what magnitude they have or have not increased. The user has the option to adjust the date range in question and the average CO2 emission level will be plotted using a line plot showing the trend of the data over time.")
   )
 )
 
 # Interactive tab #1
 interactive_tab1 <- tabPanel(
-  "Charlie",
+  "Average Emissions Over Time",
   sidebarLayout(
     sidebar_panel_widget,
     main_panel_plot
