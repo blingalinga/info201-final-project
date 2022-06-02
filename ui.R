@@ -102,21 +102,29 @@ sidebar_panel_widget3 <- sidebarPanel(
 )
 
 # Put a plot in the middle of the page
-main_panel_plot3 <- mainPanel(
-  plotlyOutput(outputId = "climate_plot3"),
+main_panel_plot4 <- mainPanel(
+  plotlyOutput(outputId = "climate_plot4"),
   fluidPage(
-    p("Filler Text")
+    p("This chart depicts the amount of readings collected a month that contributes to the mobthly average of CO2 mole fraction. The amount of daily readings started in May of 1974 which aims to allows to user to see the if there has been a change of varience over the past 44 years. The user has the option to adjust the date range in question and the daily emission readings will be plotted for the selected month using a scatter plot showing the trend of the data over time")
   )
 )
 # Interactive tab #3  — combine sidebar panel and main panel
 interactive_tab3 <- tabPanel(
-  "Henry",
+  "Daily CO2 Reading Contribution to Monthly Average",
   sidebarLayout(
-    sidebar_panel_widget3,
-    main_panel_plot3
+    sidebar_panel_widget4,
+    main_panel_plot4
   )
 )
-
+sidebar_panel_widget4 <- sidebarPanel(
+  sliderInput(inputId = "slider4",
+              label = h4("Select Date Range"),
+              min = min(climate_df$Date),
+              max = max(climate_df$Date),
+              sep = "",
+              value = c(1974-05-01, 2018-09-01)
+  )
+)
 # Conclusion Tab
 conclusion_side_bar <- sidebarPanel(
   img(src = "https://www.holcim.com/sites/holcim/files/styles/teaser_2cols/public/images/holcim_icon_sustainability_gradient_srgb_climate_1-3teaser_v2_1.png?h=a8249c90&itok=prtjvSbV", height="100%", width="100%")

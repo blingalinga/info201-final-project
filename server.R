@@ -43,5 +43,24 @@ server <- function(input, output) {
     
     return(co2_plot3)
   })
-}
 
+  
+    
+    henry_co2data <- climate_df %>% 
+      filter(Number.of.Days > -1) %>% 
+      filter(Date >= input$slider1[1] & Date <= input$slider1[2])
+   
+    output$climateplot4 <- renderPlotly({
+      
+   co2_plot4 <- ggplotly(
+     ggplot(data = co2data) +
+       geom_point(mapping = aes(x = Date, 
+                               y = Number.of.Days,
+                               color = Average)) +
+      labs(title = "Number of Daily Readings Contributed in Each Month",
+           x = "Month",
+           y= "Number of Readings",
+           color = "Number of Days"))
+   return(co2_plot4)
+  })
+}
