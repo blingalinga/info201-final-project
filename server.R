@@ -15,10 +15,10 @@ server <- function(input, output) {
       filter(Year >= input$slider1[1] & Year <= input$slider1[2])
     
     climate_df_mean <- filtered_df  %>%
-      filter(Average != -99.99 & Year > 1958) %>% group_by(Year) %>% summarize(mean_co2 = mean(Average))
+      filter(Average != -99.99 & Year > 1958) %>% group_by(Year) %>% mutate(mean_co2 = mean(Average))
 
     co2_plot1 <- ggplot(data = climate_df_mean) +
-      geom_line(mapping = aes(x = mean_co2, y = Average)) +
+      geom_line(mapping = aes(x = Decimal.Date, y = mean_co2)) +
       labs(title = "CO2 EmissionTrends", x = "Year", y = "Average CO2 Emissions")
 
     return(co2_plot1)
