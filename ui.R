@@ -74,7 +74,7 @@ main_panel_plot2 <- mainPanel(
 )
 # Interactive tab #2
 interactive_tab2 <- tabPanel(
-  "Christopher",
+  "Annual Change in CO2 Emissions Per Year",
   sidebarLayout(
     sidebar_panel_widget2,
     main_panel_plot2

@@ -22,13 +22,14 @@ server <- function(input, output) {
   
   output$climate_plot2 <- renderPlotly({
     
-    filtered_df <- climate_df %>% 
-      mutate(DateConverted = as.Date(Date)) %>% 
-      filter(DateConverted >= input$slider1[1] & DateConverted <= input$slider1[2])
+    climate_df_mean <- climate_df %>% mutate(Year = str_sub(string = Date, 1, 4)) %>% 
+      filter(Average != -99.99 & Year > 1958) %>% group_by(Year) %>% summarize(mean_co2 = mean(Average))
+    
+    climate_df_mean <- climate_df_mean %>% summarize(annual_change = mean_co2 - lag(mean_co2))
     
     co2_plot2 <- ggplot(data = filtered_df) +
-      geom_line(mapping = aes(x = DateConverted, y = Average)) +
-      labs(title = "CO2 Trends", x = "Date", y = "CO2 Emissions")
+      geom_line(mapping = aes(x = year, y = change)) +
+      labs(title = "CO2 Trends", x = "Year", y = "Annual Change in CO2 Emissions")
     
     return(co2_plot2)
   })
