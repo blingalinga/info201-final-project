@@ -121,33 +121,32 @@ interactive_tab3 <- tabPanel(
 )
  
 # Conclusion Tab
-conclusion_side_bar <- sidebarPanel(
-  img(src = "https://www.holcim.com/sites/holcim/files/styles/teaser_2cols/public/images/holcim_icon_sustainability_gradient_srgb_climate_1-3teaser_v2_1.png?h=a8249c90&itok=prtjvSbV", height="100%", width="100%")
-)
 
 conclusion_main_panel <- mainPanel(
-  h2("So what did we find?"),
-  p("Our analysis of this data through visualizations and calculations have show us that there is a trend in this CO2 as shown in the plot on page: Average Emissions Over Time. Over time, CO2 levels have been rising which could have drastic effects on our environment and our health."),
-  p("These rising CO2 emissions will affect our climate through rising temperatures"),
-  p("Since we are dealing with CO2 emission reading and interpretation since 1958 we can observe the correlation of emissions to environmental and health outcomes. In 1950 the world emitted 6 billion tonnes of CO2, meanwhile, we emit about 34 billion tonnes each year in the past decade.1 This is vital since we can compare the data to fossil fuel usage and see that it is the main reason for the spike in emissions into the atmosphere. This increase in CO2 in the atmosphere has led to a .14 degree Fahrenheit increase each decade since 1880.2 The amount of increase does seem small but since Earth is so large it needs more energy to be generated to increase the temperature. In perspective, the 10 warmest years that have been recorded have occurred since 2005 and the small amount of increased temperature could be a large factor in the changes that we have observed. Although the amount of temperature change seems minimal, there have been drawbacks and projected drawbacks. Normal levels of CO2 are 400-1,000 ppm; anything above that range will cause drowsiness, headaches, nausea, increased heart rate, and over time could lead to serious health outcomes.3 As we monitor emission trends from 1958-2018 that has already impacted our planet and eventually will reach a point where the damages are irreversible consider the outcomes that are caused by these emissions. This information was informed from the following sources:"),
-  tags$a(href="https://ourworldindata.org/co2-emissions", 
-         "Our world in data"),
-  tags$a(href="https://www.climate.gov/news-features/understanding-climate/climate-change-global-temperature#:~:text=Earth's%20temperature%20has%20risen%20by,land%20areas%20were%20record%20warm", 
-         "Climate.gov"),
-  tags$a(href="https://www.dhs.wisconsin.gov/chemical/carbondioxide.htm#:~:text=400%E2%80%931%2C000%20ppm%3A%20typical%20level,stagnant%2C%20stale%2C%20stuffy%20air", 
-         "DHS"),
-  p("Additionally, our change in variance chart titled Daily CO2 Reading Contribution to Monthly Average, shows that there has been variance over the past 44 years in CO2 levels."),
-  h2("Important insight"),
-  p("It is a well known fact that our world is experiencing climate change and pollution over the years has been increasing. However, our analysis of this data set can give us a clear picture of how much CO2 levels have changed over the years, and this directly correlates to how much the human population has been contributing to global warming and climate change. Understanding how much CO2 levels has changed over the years can better educate us as citizens of this world. We can begin to shift our focus from identifying factors leading to climate change as CO2 has already been identified as a major contributer, and we can focus on finding ways to combat these increased levels."),
-  h2("Summary Information"),
-  p("The summary paragraph in our findings conducted simple calculations to find the mean CO2 level, median CO2 level, highest measured CO2 level, lowest measured CO2 level, and the largest difference in the measured CO2 levels. The mean CO2 value was 353.93 while the median was slightly higher at the value of 351.31. The highest measured CO2 level was 351.58 while the lowest was 313.2 which excludes the value of -99.99 as this is what they input for any data they did not collect, this would have affected the average levels if we did not filter -99.99 out of our table. Additionally, this would have affected the value calculated for the largest difference in the measured CO2 level which was calculated to be 98.04 without the value of -99.99. These summary statistics can give us insight into how much CO2 levels have fluctuated and around what value they usually were throughout the time period of 19588-2018."),
-  h2("Broader Implications"),
-  p("As stated above, climate change is real and is being caused by the increased CO2 levels in our atmosphere. Not only do our findings offer insight into the levels of CO2 in the atmosphere, they can serve as a foundation for understanding our rising temperatures, sea levels, and increased wildfires. This data analysis is just one step in what needs to be a large exploration of what is causing climate change and what we can do to combat it. Our health and livelihoods are at risk because of these CO2 levels and hopefully this analysis can bring exposure and light to the issue.")
+  fluidPage(
+    img(src = "https://www.holcim.com/sites/holcim/files/styles/teaser_2cols/public/images/holcim_icon_sustainability_gradient_srgb_climate_1-3teaser_v2_1.png?h=a8249c90&itok=prtjvSbV", height="100%", width="100%"),
+    h2("So what did we find?"),
+    p("Our analysis of this data through visualizations and calculations have show us that there is a trend in this CO2 as shown in the plot on page: Average Emissions Over Time. Over time, CO2 levels have been rising which could have drastic effects on our environment and our health."),
+    p("These rising CO2 emissions will affect our climate through rising temperatures"),
+    p("Since we are dealing with CO2 emission reading and interpretation since 1958 we can observe the correlation of emissions to environmental and health outcomes. In 1950 the world emitted 6 billion tonnes of CO2, meanwhile, we emit about 34 billion tonnes each year in the past decade.1 This is vital since we can compare the data to fossil fuel usage and see that it is the main reason for the spike in emissions into the atmosphere. This increase in CO2 in the atmosphere has led to a .14 degree Fahrenheit increase each decade since 1880.2 The amount of increase does seem small but since Earth is so large it needs more energy to be generated to increase the temperature. In perspective, the 10 warmest years that have been recorded have occurred since 2005 and the small amount of increased temperature could be a large factor in the changes that we have observed. Although the amount of temperature change seems minimal, there have been drawbacks and projected drawbacks. Normal levels of CO2 are 400-1,000 ppm; anything above that range will cause drowsiness, headaches, nausea, increased heart rate, and over time could lead to serious health outcomes.3 As we monitor emission trends from 1958-2018 that has already impacted our planet and eventually will reach a point where the damages are irreversible consider the outcomes that are caused by these emissions. This information was informed from the following sources:"),
+    tags$a(href="https://ourworldindata.org/co2-emissions", 
+           "Our world in data"),
+    tags$a(href="https://www.climate.gov/news-features/understanding-climate/climate-change-global-temperature#:~:text=Earth's%20temperature%20has%20risen%20by,land%20areas%20were%20record%20warm", 
+           "Climate.gov"),
+    tags$a(href="https://www.dhs.wisconsin.gov/chemical/carbondioxide.htm#:~:text=400%E2%80%931%2C000%20ppm%3A%20typical%20level,stagnant%2C%20stale%2C%20stuffy%20air", 
+           "DHS"),
+    p("Additionally, our change in variance chart titled Daily CO2 Reading Contribution to Monthly Average, shows that there has been variance over the past 44 years in CO2 levels."),
+    h2("Important insight"),
+    p("It is a well known fact that our world is experiencing climate change and pollution over the years has been increasing. However, our analysis of this data set can give us a clear picture of how much CO2 levels have changed over the years, and this directly correlates to how much the human population has been contributing to global warming and climate change. Understanding how much CO2 levels has changed over the years can better educate us as citizens of this world. We can begin to shift our focus from identifying factors leading to climate change as CO2 has already been identified as a major contributer, and we can focus on finding ways to combat these increased levels."),
+    h2("Summary Information"),
+    p("The summary paragraph in our findings conducted simple calculations to find the mean CO2 level, median CO2 level, highest measured CO2 level, lowest measured CO2 level, and the largest difference in the measured CO2 levels. The mean CO2 value was 353.93 while the median was slightly higher at the value of 351.31. The highest measured CO2 level was 351.58 while the lowest was 313.2 which excludes the value of -99.99 as this is what they input for any data they did not collect, this would have affected the average levels if we did not filter -99.99 out of our table. Additionally, this would have affected the value calculated for the largest difference in the measured CO2 level which was calculated to be 98.04 without the value of -99.99. These summary statistics can give us insight into how much CO2 levels have fluctuated and around what value they usually were throughout the time period of 19588-2018."),
+    h2("Broader Implications"),
+    p("As stated above, climate change is real and is being caused by the increased CO2 levels in our atmosphere. Not only do our findings offer insight into the levels of CO2 in the atmosphere, they can serve as a foundation for understanding our rising temperatures, sea levels, and increased wildfires. This data analysis is just one step in what needs to be a large exploration of what is causing climate change and what we can do to combat it. Our health and livelihoods are at risk because of these CO2 levels and hopefully this analysis can bring exposure and light to the issue.")
+  )
 )
 
 conclusion_tab <- tabPanel(
   "Conclusion",
-  conclusion_side_bar,
   conclusion_main_panel
   )
 
