@@ -2,6 +2,7 @@ library(ggplot2)
 library(plotly)
 library(dplyr)
 library(stringr)
+library(scales)
 
 climate_df <- read.csv("https://datahub.io/core/co2-ppm/r/0.csv", stringsAsFactors = FALSE)
 
@@ -19,7 +20,7 @@ server <- function(input, output) {
 
     co2_plot1 <- ggplot(data = climate_df_mean) +
       geom_line(mapping = aes(x = Decimal.Date, y = mean_co2)) +
-      labs(title = "CO2 EmissionTrends", x = "Year", y = "Average CO2 Emissions")
+      labs(title = "CO2 Emission Trends", x = "Year", y = "Average CO2 Emissions")
 
     return(co2_plot1)
   })
@@ -35,8 +36,8 @@ server <- function(input, output) {
     climate_df_mean <- climate_df_mean %>% mutate(annual_change = mean_co2 - lag(mean_co2))
 
     co2_plot2 <- ggplot(data = climate_df_mean) +
-      geom_point(mapping = aes(x = Year, y = annual_change, color = annual_change)) +
-      labs(title = "CO2 Trends", x = "Year", y = "Annual Change in CO2 Emissions")
+      geom_point(mapping = aes(x = as.Date(Year,"%Y"), y = annual_change, color = annual_change), text = paste("Year: ", climate_df_mean$Year)) +
+      labs(title = "Annual Change in CO2 Emissions", x = "Year", y = "Change in CO2 Emissions (PPM)") + ylim(0, NA) + scale_color_gradient(low = "red", high = "black") + scale_x_date(date_breaks = "5 years", date_labels = "%Y")
 
     return(co2_plot2)
   })
