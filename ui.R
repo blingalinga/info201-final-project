@@ -35,7 +35,7 @@ climate_df <- climate_df %>%
 sidebar_panel_widget1 <- sidebarPanel(
   sliderInput(inputId = "slider1",
               label = h4("Select Date Range"),
-              min = 1959,
+              min = 1958,
               max = 2018,
               sep = "",
               value = (c(2000,2018))
@@ -63,10 +63,10 @@ interactive_tab1 <- tabPanel(
 sidebar_panel_widget2 <- sidebarPanel(
   sliderInput(inputId = "slider2",
               label = h4("Select Year Range"),
-              min = 1959,
+              min = 1958,
               max = 2018,
               sep = "",
-              value = (c(1959, 2018))
+              value = (c(1958, 2018))
   )
 )
 
@@ -74,7 +74,7 @@ sidebar_panel_widget2 <- sidebarPanel(
 main_panel_plot2 <- mainPanel(
   plotlyOutput(outputId = "climate_plot2"),
   fluidPage(
-    p("Filler Text")
+    p("This chart is intended to show the total change in average CO2 emissions per year, from 1958 to 2018, thus exploring how trends in CO2 emissions have developed over time. The user may input the date range and a scatterplot indicating the difference between the average CO2 emissions of each year in the given range and the previous year.")
   )
 )
 # Interactive tab #2
@@ -100,7 +100,7 @@ sidebar_panel_widget3 <- sidebarPanel(
 main_panel_plot4 <- mainPanel(
   plotlyOutput(outputId = "climate_plot4"),
   fluidPage(
-    p("This chart depicts the amount of readings collected a month that contributes to the mobthly average of CO2 mole fraction. The amount of daily readings started in May of 1974 which aims to allows to user to see the if there has been a change of varience over the past 44 years. The user has the option to adjust the date range in question and the daily emission readings will be plotted for the selected month using a scatter plot showing the trend of the data over time")
+    p("This chart depicts the amount of readings collected a month that contributes to the mobthly average of CO2 mole fraction. The amount of daily readings started in May of 1974 which aims to allows to user to see the if there has been a change of variance over the past 44 years. The user has the option to adjust the date range in question and the daily emission readings will be plotted for the selected month using a scatter plot showing the trend of the data over time")
   )
 )
 sidebar_panel_widget4 <- sidebarPanel(
