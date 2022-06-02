@@ -62,18 +62,19 @@ server <- function(input, output) {
 
   output$climateplot4 <- renderPlotly({
     
-    filtered_df <- climate_df %>%
+    filtered_df1 <- climate_df %>%
       mutate(DateConverted = as.Date(Date)) %>%
-      filter(DateConverted >= as.Date(input$slider3[1]) & DateConverted <= as.Date(input$slider3[2]))
+      filter(Number.of.Days > 0)
     
-    co2_plot4 <- ggplot(data = filtered_df) +
+    co2_plot4 <- ggplot(data = filtered_df1) +
       geom_point(mapping = aes(x = Date,
                                y = Number.of.Days,
                                color = Average)) +
       labs(title = "Number of Daily Readings Contributed in Each Month",
            x = "Month",
-           y= "Number of Readings")
-    return(co2_plot4)
+           y= "Number of Readings Collected")
+   
+     return(co2_plot4)
   })
 }
 # =======

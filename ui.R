@@ -98,16 +98,16 @@ sidebar_panel_widget3 <- sidebarPanel(
 
 # Put a plot in the middle of the page
 main_panel_plot4 <- mainPanel(
-  plotlyOutput(outputId = "climate_plot4"),
+  plotlyOutput(outputId = "climateplot4"),
   fluidPage(
     p("This chart depicts the amount of readings collected a month that contributes to the mobthly average of CO2 mole fraction. The amount of daily readings started in May of 1974 which aims to allows to user to see the if there has been a change of variance over the past 44 years. The user has the option to adjust the date range in question and the daily emission readings will be plotted for the selected month using a scatter plot showing the trend of the data over time")
   )
 )
 sidebar_panel_widget4 <- sidebarPanel(
-  selectInput(inputId = "slider4",
+  selectInput(inputId = "select4",
               label = h4("Select Year"),
               choices = climate_df$Date,
-              selected = 2018,
+              selected = NULL,
               multiple = TRUE
    )
 )
