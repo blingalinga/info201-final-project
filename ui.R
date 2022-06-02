@@ -63,10 +63,10 @@ interactive_tab1 <- tabPanel(
 sidebar_panel_widget2 <- sidebarPanel(
   sliderInput(inputId = "slider2",
               label = h4("Select Year Range"),
-              min = 1958,
-              max = 2018,
+              min = min(climate_df$DateConverted),
+              max = max(climate_df$DateConverted),
               sep = "",
-              value = c(1958, 2018)
+              value = (c(min(climate_df$DateConverted, max(climate_df$DateConverted))))
   )
 )
 
@@ -79,7 +79,7 @@ main_panel_plot2 <- mainPanel(
 )
 # Interactive tab #2
 interactive_tab2 <- tabPanel(
-  "Annual Change in CO2 Emissions By Year",
+  "Annual Change in CO2 Emissions Per Year",
   sidebarLayout(
     sidebar_panel_widget2,
     main_panel_plot2
@@ -89,10 +89,10 @@ interactive_tab2 <- tabPanel(
 sidebar_panel_widget3 <- sidebarPanel(
   sliderInput(inputId = "slider3",
               label = h4("Select Year Range"),
-              min = as.Date(min(climate_df$Date),"%Y-%m-%d"),
-              max = as.Date(max(climate_df$Date),"%Y-%m-%d"),
+              min = min(climate_df$DateConverted),
+              max = max(climate_df$DateConverted),
               sep = "",
-              value = c(as.Date(min(climate_df$Date),"%Y-%m-%d"), as.Date(max(climate_df$Date),"%Y-%m-%d"))
+              value = (c(min(climate_df$DateConverted, max(climate_df$DateConverted))))
   )
 )
 
@@ -127,7 +127,18 @@ conclusion_side_bar <- sidebarPanel(
 )
 
 conclusion_main_panel <- mainPanel(
-  p("Filler Text")
+  h2("So what did we find?"),
+  p("Our analysis of this data through visualizations and calculations have show us that there is a trend in this CO2 as shown in the plot on page: Average Emissions Over Time. Over time, CO2 levels have been rising which could have drastic effects on our environment and our health."),
+  p("These rising CO2 emissions will affect our climate through rising temperatures"),
+  p("Since we are dealing with CO2 emission reading and interpretation since 1958 we can observe the correlation of emissions to environmental and health outcomes. In 1950 the world emitted 6 billion tonnes of CO2, meanwhile, we emit about 34 billion tonnes each year in the past decade.1 This is vital since we can compare the data to fossil fuel usage and see that it is the main reason for the spike in emissions into the atmosphere. This increase in CO2 in the atmosphere has led to a .14 degree Fahrenheit increase each decade since 1880.2 The amount of increase does seem small but since Earth is so large it needs more energy to be generated to increase the temperature. In perspective, the 10 warmest years that have been recorded have occurred since 2005 and the small amount of increased temperature could be a large factor in the changes that we have observed. Although the amount of temperature change seems minimal, there have been drawbacks and projected drawbacks. Normal levels of CO2 are 400-1,000 ppm; anything above that range will cause drowsiness, headaches, nausea, increased heart rate, and over time could lead to serious health outcomes.3 As we monitor emission trends from 1958-2018 that has already impacted our planet and eventually will reach a point where the damages are irreversible consider the outcomes that are caused by these emissions. This information was informed from the following sources:"),
+  tags$a(href="https://ourworldindata.org/co2-emissions", 
+         "Our world in data"),
+  tags$a(href="https://www.climate.gov/news-features/understanding-climate/climate-change-global-temperature#:~:text=Earth's%20temperature%20has%20risen%20by,land%20areas%20were%20record%20warm", 
+         "Climate.gov"),
+  tags$a(href="https://www.dhs.wisconsin.gov/chemical/carbondioxide.htm#:~:text=400%E2%80%931%2C000%20ppm%3A%20typical%20level,stagnant%2C%20stale%2C%20stuffy%20air", 
+         "DHS"),
+  h2("Summary Information"),
+  p("The summary paragraph in our findings conducted simple calculations to find the mean CO2 level, median CO2 level, highest measured CO2 level, lowest measured CO2 level, and the largest difference in the measured CO2 levels. The mean CO2 value was 353.93 while the median was slightly higher at the value of 351.31. The highest measured CO2 level was 351.58 while the lowest was 313.2 which excludes the value of -99.99 as this is what they input for any data they did not collect, this would have affected the average levels if we did not filter -99.99 out of our table. Additionally, this would have affected the value calculated for the largest difference in the measured CO2 level which was calculated to be 98.04 without the value of -99.99. These summary statistics can give us insight into how much CO2 levels have fluctuated and around what value they usually were throughout the time period of 19588-2018.")
 )
 
 conclusion_tab <- tabPanel(
