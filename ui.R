@@ -104,19 +104,18 @@ main_panel_plot4 <- mainPanel(
   )
 )
 sidebar_panel_widget4 <- sidebarPanel(
-  # sliderInput(inputId = "slider4",
-  #             label = h4("Select Date Range"),
-  #             min = min(climate_df$Date),
-  #             max = max(climate_df$Date),
-  #             sep = "",
-  #             value = c(1974-05-01, 2018-09-01)
-  # )
+  selectInput(inputId = "slider4",
+              label = h4("Select Year"),
+              choices = climate_df$Date,
+              selected = 2018,
+              multiple = TRUE,
+   )
 )
 # Interactive tab #3  — combine sidebar panel and main panel
 interactive_tab3 <- tabPanel(
   "Daily CO2 Reading Contribution to Monthly Average",
   sidebarLayout(
-    sidebar_panel_widget3,
+    sidebar_panel_widget4,
     main_panel_plot4
   )
 )
