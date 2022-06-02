@@ -22,14 +22,17 @@ server <- function(input, output) {
   })
    
   output$climate_plot2 <- renderPlotly({
+    
+    filtered_df <- climate_df %>% mutate(Year = str_sub(string = Date, 1, 4)) %>% 
+      filter(Year >= input$slider2[1] & Year <= input$slider2[2])
 
-    climate_df_mean <- climate_df %>% mutate(Year = str_sub(string = Date, 1, 4)) %>%
+    climate_df_mean <- filtered_df  %>%
       filter(Average != -99.99 & Year > 1958) %>% group_by(Year) %>% summarize(mean_co2 = mean(Average))
 
-    climate_df_mean <- climate_df_mean %>% summarize(annual_change = mean_co2 - lag(mean_co2))
+    climate_df_mean <- climate_df_mean %>% mutate(annual_change = mean_co2 - lag(mean_co2))
 
-    co2_plot2 <- ggplot(data = filtered_df) +
-      geom_line(mapping = aes(x = year, y = change)) +
+    co2_plot2 <- ggplot(data = climate_df_mean) +
+      geom_point(mapping = aes(x = Year, y = annual_change, color = annual_change)) +
       labs(title = "CO2 Trends", x = "Year", y = "Annual Change in CO2 Emissions")
 
     return(co2_plot2)
@@ -39,7 +42,7 @@ server <- function(input, output) {
 
     filtered_df <- climate_df %>%
       mutate(DateConverted = as.Date(Date)) %>%
-      filter(DateConverted >= input$slider3[1] & DateConverted <= input$slider3[2])
+      filter(DateConverted >= as.Date(input$slider3[1]) & DateConverted <= as.Date(input$slider3[2]))
 
     co2_plot3 <- ggplot(data = filtered_df) +
       geom_line(mapping = aes(x = DateConverted, y = Average)) +

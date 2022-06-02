@@ -63,10 +63,10 @@ interactive_tab1 <- tabPanel(
 sidebar_panel_widget2 <- sidebarPanel(
   sliderInput(inputId = "slider2",
               label = h4("Select Year Range"),
-              min = min(climate_df$DateConverted),
-              max = max(climate_df$DateConverted),
+              min = 1958,
+              max = 2018,
               sep = "",
-              value = (c(min(climate_df$DateConverted, max(climate_df$DateConverted))))
+              value = c(1958, 2018)
   )
 )
 
@@ -79,7 +79,7 @@ main_panel_plot2 <- mainPanel(
 )
 # Interactive tab #2
 interactive_tab2 <- tabPanel(
-  "Annual Change in CO2 Emissions Per Year",
+  "Annual Change in CO2 Emissions By Year",
   sidebarLayout(
     sidebar_panel_widget2,
     main_panel_plot2
@@ -89,10 +89,10 @@ interactive_tab2 <- tabPanel(
 sidebar_panel_widget3 <- sidebarPanel(
   sliderInput(inputId = "slider3",
               label = h4("Select Year Range"),
-              min = min(climate_df$DateConverted),
-              max = max(climate_df$DateConverted),
+              min = as.Date(min(climate_df$Date),"%Y-%m-%d"),
+              max = as.Date(max(climate_df$Date),"%Y-%m-%d"),
               sep = "",
-              value = (c(min(climate_df$DateConverted, max(climate_df$DateConverted))))
+              value = c(as.Date(min(climate_df$Date),"%Y-%m-%d"), as.Date(max(climate_df$Date),"%Y-%m-%d"))
   )
 )
 
