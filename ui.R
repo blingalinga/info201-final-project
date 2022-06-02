@@ -35,10 +35,10 @@ climate_df <- climate_df %>%
 sidebar_panel_widget1 <- sidebarPanel(
   sliderInput(inputId = "slider1",
               label = h4("Select Date Range"),
-              min = min(climate_df$DateConverted),
-              max = max(climate_df$DateConverted),
+              min = 1959,
+              max = 2018,
               sep = "",
-              value = (c(min(climate_df$DateConverted, max(climate_df$DateConverted))))
+              value = (c(2000,2018))
   )
 )
 
