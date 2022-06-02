@@ -63,10 +63,10 @@ interactive_tab1 <- tabPanel(
 sidebar_panel_widget2 <- sidebarPanel(
   sliderInput(inputId = "slider2",
               label = h4("Select Year Range"),
-              min = min(climate_df$DateConverted),
-              max = max(climate_df$DateConverted),
+              min = 1959,
+              max = 2018,
               sep = "",
-              value = (c(min(climate_df$DateConverted, max(climate_df$DateConverted))))
+              value = (c(1959, 2018))
   )
 )
 
