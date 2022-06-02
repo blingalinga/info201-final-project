@@ -20,6 +20,8 @@ intro_tab <- tabPanel(
     p("This dataset was found on datahub.io. The CO2 PPM trend data was collected by the United States Government Earth System Research Laboratory, Global Monitoring Division at Mauna Loa. The method of data collection over time may have changed due to developing filtration and measurement technologies. This data is collected by sampling the air atop the Hawaiian volcano Mauna Loa and the CO2 levels are monitored mainly through the use of spectroscopy. This data was collected since the 1950s for the purpose of monitoring atmospheric CO2, these measurements can reflect truths about the global atmosphere. In our data, there are 727 observations collected beginning in 1958. This data also has 5 unique columns including date/decimal date, average CO2 PPM, interpolated, trend, and number of days. This dataset contains data about our atmospheric CO2 trends which would affect the population on a global scale but a question a power we could consider is how certain countries have resources to respond to the trends that can be seen in the dataset while some countries may lack the same resources. Limitations to this data set include one location for sampling. The data found here only considers CO2 levels measured a a single location(Mauna Loa) and it is possible that the levels vary in various locations despite being atmospheric levels.")
   )
 )
+climate_df <- climate_df %>% 
+  mutate(DateConverted = as.Date(Date))
 
 # We want our next tab to have a sidebar layout
 # So we're going to create a sidebarPanel() and a mainPanel() and then add them together
@@ -28,10 +30,10 @@ intro_tab <- tabPanel(
 sidebar_panel_widget1 <- sidebarPanel(
   sliderInput(inputId = "slider1",
               label = h4("Select Date Range"),
-              min = min(as.Date(climate_df$Date)),
-              max = max(as.Date(climate_df$Date)),
+              min = min(climate_df$DateConverted),
+              max = max(climate_df$DateConverted),
               sep = "",
-              value = as.Date(c(2010-01-01, 2018-09-01))
+              value = (c(min(climate_df$DateConverted, max(climate_df$DateConverted))))
   )
 )
 
@@ -47,8 +49,8 @@ main_panel_plot1 <- mainPanel(
 interactive_tab1 <- tabPanel(
   "Average Emissions Over Time",
   sidebarLayout(
-    sidebar_panel_widget,
-    main_panel_plot
+    sidebar_panel_widget1,
+    main_panel_plot1
   )
 )
 
@@ -56,10 +58,10 @@ interactive_tab1 <- tabPanel(
 sidebar_panel_widget2 <- sidebarPanel(
   sliderInput(inputId = "slider2",
               label = h4("Select Year Range"),
-              min = min(as.Date(climate_df$Date)),
-              max = max(as.Date(climate_df$Date)),
+              min = min(climate_df$DateConverted),
+              max = max(climate_df$DateConverted),
               sep = "",
-              value = as.Date(c(2010-01-01, 2018-09-01))
+              value = (c(min(climate_df$DateConverted, max(climate_df$DateConverted))))
   )
 )
 
@@ -82,10 +84,10 @@ interactive_tab2 <- tabPanel(
 sidebar_panel_widget3 <- sidebarPanel(
   sliderInput(inputId = "slider3",
               label = h4("Select Year Range"),
-              min = min(as.Date(climate_df$Date)),
-              max = max(as.Date(climate_df$Date)),
+              min = min(climate_df$DateConverted),
+              max = max(climate_df$DateConverted),
               sep = "",
-              value = as.Date(c(2010-01-01, 2018-09-01))
+              value = (c(min(climate_df$DateConverted, max(climate_df$DateConverted))))
   )
 )
 
@@ -131,4 +133,3 @@ ui <- navbarPage(
   conclusion_tab
 )
 
-min(as.Date(climate_df$Date))
