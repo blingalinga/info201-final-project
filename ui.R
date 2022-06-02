@@ -62,16 +62,16 @@ sidebar_panel_widget2 <- sidebarPanel(
   ),
   sliderInput(inputId = "slider2",
               label = h4("Select Year Range"),
-              min = min(climate_df$year),
-              max = max(climate_df$year),
+              min = min(climate_df$Date),
+              max = max(climate_df$Date),
               sep = "",
-              value = c(2010, 2020)
+              value = c(2010-01-01, 2018-09-01)
   )
 )
 
 # Put a plot in the middle of the page
 main_panel_plot2 <- mainPanel(
-  plotlyOutput(outputId = "climate_plot"),
+  plotlyOutput(outputId = "climate_plot2"),
   fluidPage(
     p("Filler Text")
   )
@@ -94,10 +94,10 @@ sidebar_panel_widget3 <- sidebarPanel(
   ),
   sliderInput(inputId = "slider3",
               label = h4("Select Year Range"),
-              min = min(climate_df$year),
-              max = max(climate_df$year),
+              min = min(climate_df$Date),
+              max = max(climate_df$Date),
               sep = "",
-              value = c(2010, 2020)
+              value = c(2010-01-01, 2018-09-01)
   )
 )
 
