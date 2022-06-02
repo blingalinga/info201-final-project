@@ -56,7 +56,7 @@ server <- function(input, output) {
     output$climateplot4 <- renderPlotly({
       
    co2_plot4 <- ggplotly(
-     ggplot(data = co2data) +
+     ggplot(data = henry_co2data) +
        geom_point(mapping = aes(x = Date, 
                                y = Number.of.Days,
                                color = Average)) +
