@@ -1,6 +1,7 @@
 library(ggplot2)
 library(plotly)
 library(dplyr)
+library(stringr)
 
 climate_df <- read.csv("https://datahub.io/core/co2-ppm/r/0.csv", stringsAsFactors = FALSE)
 
@@ -19,7 +20,7 @@ server <- function(input, output) {
 
     return(co2_plot1)
   })
-#   
+   
   output$climate_plot2 <- renderPlotly({
 
     climate_df_mean <- climate_df %>% mutate(Year = str_sub(string = Date, 1, 4)) %>%
