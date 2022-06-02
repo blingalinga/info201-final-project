@@ -28,10 +28,10 @@ intro_tab <- tabPanel(
 sidebar_panel_widget1 <- sidebarPanel(
   sliderInput(inputId = "slider1",
               label = h4("Select Date Range"),
-              min = min(climate_df$Date),
-              max = max(climate_df$Date),
+              min = min(as.Date(climate_df$Date)),
+              max = max(as.Date(climate_df$Date)),
               sep = "",
-              value = c(2010-01-01, 2018-09-01)
+              value = as.Date(c(2010-01-01, 2018-09-01))
   )
 )
 
@@ -54,18 +54,12 @@ interactive_tab1 <- tabPanel(
 
 
 sidebar_panel_widget2 <- sidebarPanel(
-  checkboxGroupInput(
-    inputId = "country_selection2",
-    label = h4("Select a Region"),
-    choices = c("World", "United States", "China", "Asia"),
-    selected = "United States"
-  ),
   sliderInput(inputId = "slider2",
               label = h4("Select Year Range"),
-              min = min(climate_df$Date),
-              max = max(climate_df$Date),
+              min = min(as.Date(climate_df$Date)),
+              max = max(as.Date(climate_df$Date)),
               sep = "",
-              value = c(2010-01-01, 2018-09-01)
+              value = as.Date(c(2010-01-01, 2018-09-01))
   )
 )
 
@@ -86,18 +80,12 @@ interactive_tab2 <- tabPanel(
 )
 
 sidebar_panel_widget3 <- sidebarPanel(
-  checkboxGroupInput(
-    inputId = "country_selection3",
-    label = h4("Select a Region"),
-    choices = c("World", "United States", "China", "Asia"),
-    selected = "United States"
-  ),
   sliderInput(inputId = "slider3",
               label = h4("Select Year Range"),
-              min = min(climate_df$Date),
-              max = max(climate_df$Date),
+              min = min(as.Date(climate_df$Date)),
+              max = max(as.Date(climate_df$Date)),
               sep = "",
-              value = c(2010-01-01, 2018-09-01)
+              value = as.Date(c(2010-01-01, 2018-09-01))
   )
 )
 
@@ -143,3 +131,4 @@ ui <- navbarPage(
   conclusion_tab
 )
 
+min(as.Date(climate_df$Date))
